@@ -9,17 +9,16 @@
 --
 USE `sas238`;-- put your database name in the single quotes
 
-DROP TABLE IF EXISTS `accounts`;
+DROP TABLE IF EXISTS `accounts000`;
 
 CREATE TABLE  `accounts000` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(60) DEFAULT NULL,
+  `password` varchar(30) DEFAULT NULL,
   `fname` varchar(30) DEFAULT NULL,
   `lname` varchar(30) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `birthday` date DEFAULT NULL,
-  `gender` varchar(20) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL,
+  `college` varchar(20) DEFAULT NULL,
+  `major` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
@@ -27,19 +26,19 @@ CREATE TABLE  `accounts000` (
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts000` (`id`, `email`, `fname`, `lname`, `phone`, `birthday`, `gender`, `password`) VALUES
-(1, 'mjlee@njit.edu', 'Mike', 'Lee', '974-555-5555', '2000-05-05', 'male', '1234'),
-(2, 'janedoe@njit.edu', 'John', 'Doe', '555-555-5555', '1950-07-07', 'female', '1234'),
-(3, 'ml4q73@njit.edu', NULL, NULL, NULL, NULL, NULL, '1'),
-(4, 'ml24q73@njit.edu', '1', '1', '111', '0011-01-01', 'male', '2'),
-(5, 'ml241q73@njit.edu', '1', '1', '111', '0011-01-01', 'male', '1'),
-(6, 'js829', '', '', '', '0000-00-00', '', '123'),
-(7, 'test@njit.edu', 'yong', 'zhao', '911', '0000-00-00', 'male', '1234'),
-(8, 'Rebecca@gmail.com', 'Rebecca', 'cortes', '7777', '0000-00-00', 'female', 'cortes'),
-(9, '', '', '', '', '0000-00-00', '', ''),
-(10, 'test@gmail.com', 'test', 'test', '222', '0000-00-00', 'f', 'test'),
-(11, 'test2@gmail.com', 'test', 'test', '444', '0000-00-00', 'female', 'test'),
-(12, 'mjlee@njit.edu0', 'yong', 'yong', '911', '0000-00-00', 'male', '1234');
+INSERT INTO `accounts000` (`id`, `email`, `password`, `fname`, `lname`, `college`, `major`) VALUES
+(1, 'mjlee@njit.edu', '1234', 'Mike', 'Lee', 'NJIT', 'IT'),
+(2, 'janedoe@njit.edu', '1234', 'John', 'Doe', 'NJIT', 'CS'),
+(3, 'ml4q73@njit.edu', 'password', 'Michael', 'Lee', 'NJIT', 'IT'),
+(4, 'ml24q73@njit.edu', '123321', 'Maisha', 'Manir', 'Stevens University', 'Mathematics'),
+(5, 'ml241q73@njit.edu', 'kansas', 'Rempee', 'Kalia', 'NJIT', 'IT'),
+(6, 'js829', 'cutiepatootie', 'Nadia', 'Jlelaty', 'Rutgers', 'Environmental Polices'),
+(7, 'test@njit.edu', '911CALLME', 'yong', 'zhao', 'NJIT', 'Pre-Law'),
+(8, 'Rebecca@gmail.com', 'cortes', 'Rebecca', 'Cortes', 'Temple', 'IT'),
+(9, 'sas222@gmail.com', 'toocool1', 'Kim', 'Prince', 'NJIT', 'STS'),
+(10, 'test@gmail.com', 'test', 'test', 'name', 'NJIT', 'Theatre'),
+(11, 'test2@gmail.com', 'movies4life', 'Peter', 'Avila', 'SVA', 'Film'),
+(12, 'mjlee@njit.edu0', 'yong1', 'Shilpi', 'Patel', NULL, 'Business');
 
 -- --------------------------------------------------------
 

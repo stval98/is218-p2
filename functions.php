@@ -13,10 +13,21 @@ function connect (){
 	mysqli_select_db( $db, $project );
 }
 
-//authentication
+//login authentication
 function auth ($user, $pass){
 	global $db; 
 	$s   =  "select * from  accounts000 where email = '$user' and password = '$pass' " ;
+	echo  "<br>SQL statement is: $s<br>"; 
+	($t = mysqli_query( $db,  $s ) ) or die( mysqli_error($db) );
+	$num = mysqli_num_rows($t);
+	if ($num == 0 ){ return false;}
+	return true ;
+}
+
+//sign up function
+function signup($user, $pass, $fname, $lname, $college, $major){
+	global $db;
+	$s = "INSERT into accounts000 VALUES ('NULL','$user', '$pass', '$fname', '$lname', '$college', '$major')";
 	echo  "<br>SQL statement is: $s<br>"; 
 	($t = mysqli_query( $db,  $s ) ) or die( mysqli_error($db) );
 	$num = mysqli_num_rows($t);

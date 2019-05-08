@@ -13,8 +13,12 @@ connect();
 
 $user = $_GET["username"]; echo "<br>User is $user<br>";
 $pass = $_GET["password"]; echo "<br>Password is $pass<br>";
+$fname = $_GET["fname"]; echo "<br>First name is $fname<br>";
+$lname = $_GET["lname"]; echo "<br>Last name is $lname<br>";
+$college = $_GET["college"]; echo "<br>College is $college<br>";
+$major = $_GET["major"]; echo "<br>Major is $major<br>";
 
-if (auth($user, $pass)){
+if (signup($user, $pass, $fname, $lname, $college, $major)){
 	$_SESSION['user']   = $user;
 	$_SESSION['logged'] = true;
 	redirect ("Logged in! Redirecting to user profile.", "profile.php", 3);
