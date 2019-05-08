@@ -25,7 +25,7 @@ if (signup($user, $pass, $fname, $lname, $college, $major)){
 }
 
 else{
-	gatekeeper();
+	redirect("Please login!", "login.html", 3);
 }
 
 ?>

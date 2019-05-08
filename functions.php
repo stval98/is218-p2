@@ -37,15 +37,13 @@ function signup($user, $pass, $fname, $lname, $college, $major){
 
 //keep out unauthorized users
 function gatekeeper(){
-	if (! isset ($_SESSION['logged'])){
-		redirect("Please login using valid credentials!", "login.html", 3);
-	}
+	redirect("Please login using valid credentials!", "login.html", 3);
 }
 
 //sign user out
 function logout(){
-	session_set_cookie_params(0, "/~sas238/download/", "web.njit.edu");
-	session_start();
+	//session_set_cookie_params(0, "/~sas238/download/", "web.njit.edu");
+	//session_start();
 	$_SESSION = array(); 
 	session_destroy(); 
 	setcookie("PHPSESSID", "", time()-60, "/~sas238/", "", 0, 0);
