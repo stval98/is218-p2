@@ -31,9 +31,9 @@ function signup($user, $pass, $fname, $lname, $college, $major){
 	$s = "INSERT into accounts000 VALUES ('NULL','$user', '$pass', '$fname', '$lname', '$college', '$major')";
 	echo  "<br>SQL statement is: $s<br>"; 
 	($t = mysqli_query( $db,  $s ) ) or die( mysqli_error($db) );
+	echo $t;
 	$num = mysqli_num_rows($t);
-	if ($num == 0 ){ return false;}
-	return true ;
+	return $t;
 }
 
 //keep out unauthorized users

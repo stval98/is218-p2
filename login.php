@@ -7,6 +7,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 ini_set('display_errors' , 1);
 
 include ("functions.php");
+include("signup.php");
 include("account.php");
 $db = mysqli_connect($hostname,$username, $password ,$project);
 connect();
@@ -21,6 +22,10 @@ $pass = $_GET["password"]; echo "<br>Password is $pass<br>";
 if (auth($user, $pass)){
 	$_SESSION['user']   = $user;
 	$_SESSION['logged'] = true;
+	$_SESSION['fname'] = $fname;
+	$_SESSION['lname'] = $lname;
+	$_SESSION['college'] = $college;
+	$_SESSION['major'] = $major;
 	redirect ("Logged in! Redirecting to user profile.", "profile.php", 3);
 }
 
