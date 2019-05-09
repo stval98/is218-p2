@@ -16,6 +16,7 @@ function connect (){
 //login authentication
 function auth ($user, $pass){
 	global $db; 
+	global  $user;
 	$s   =  "select * from  accounts000 where email = '$user' and password = '$pass' " ;
 	echo  "<br>SQL statement is: $s<br>"; 
 	($t = mysqli_query( $db,  $s ) ) or die( mysqli_error($db) );
@@ -48,6 +49,7 @@ function logout(){
 	session_destroy(); 
 	setcookie("PHPSESSID", "", time()-60, "/~sas238/", "", 0, 0);
 	echo "Your session is terminated";
+	redirect("You have been signed out.", "login.html", 5);
 }
 
 //get data from forms

@@ -18,6 +18,12 @@
 			<label for="major">Major:</label>
 			<input id="major" name="major" type="text" placeholder="Enter major" required autofocus /><br>
 			<button id="submit" type="submit">Signup</button>
+			<button id="submit" type="submit" onclick="redirect()">Login</button>
 		</form>
 	</body>
 </html>
+<script>
+function redirect() {
+  location.replace("login.html")
+}
+</script>

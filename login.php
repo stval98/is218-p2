@@ -13,6 +13,10 @@ connect();
 
 $user = $_GET["username"]; echo "<br>User is $user<br>";
 $pass = $_GET["password"]; echo "<br>Password is $pass<br>";
+//$fname = $_GET["fname"]; echo "<br>First name is $fname<br>";
+//$lname = $_GET["lname"]; echo "<br>Last name is $lname<br>";
+//$college = $_GET["college"]; echo "<br>College is $college<br>";
+//$major = $_GET["major"]; echo "<br>Major is $major<br>";
 
 if (auth($user, $pass)){
 	$_SESSION['user']   = $user;

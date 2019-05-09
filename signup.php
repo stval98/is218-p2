@@ -21,6 +21,10 @@ $major = $_GET["major"]; echo "<br>Major is $major<br>";
 if (signup($user, $pass, $fname, $lname, $college, $major)){
 	$_SESSION['user']   = $user;
 	$_SESSION['logged'] = true;
+	$_SESSION['fname'] = $fname;
+	$_SESSION['lname'] = $lname;
+	$_SESSION['college'] = $college;
+	$_SESSION['major'] = $major;
 	redirect ("Logged in! Redirecting to user profile.", "profile.php", 3);
 }
 

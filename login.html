@@ -10,6 +10,12 @@
 			<label for="password">Password:</label>
 			<input id="password" name="password" type="text" placeholder="Enter password" required autofocus /><br>
 			<button id="submit" type="submit">Login</button>
+			<button id="submit" type="submit" onclick="redirect()">Signup</button>
 		</form>
 	</body>
 </html>
+<script>
+function redirect() {
+  location.replace("signup.html")
+}
+</script>
