@@ -1,35 +1,59 @@
-<?php 
-	session_set_cookie_params(0, "/~sas238/", "web.njit.edu");
-	session_start(); 
-?>
-<?php 
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);  
-ini_set('display_errors' , 1);
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Signup</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<?php
+include('connect.php');
 
-include ("functions.php");
-include("account.php");
-$db = mysqli_connect($hostname,$username, $password ,$project);
-connect();
+//insert user input into database
+if (isset($_REQUEST['username'])){
 
-$user = $_GET["username"]; echo "<br>User is $user<br>";
-$pass = $_GET["password"]; echo "<br>Password is $pass<br>";
-$fname = $_GET["fname"]; echo "<br>First name is $fname<br>";
-$lname = $_GET["lname"]; echo "<br>Last name is $lname<br>";
-$college = $_GET["college"]; echo "<br>College is $college<br>";
-$major = $_GET["major"]; echo "<br>Major is $major<br>";
+	$username = $_REQUEST['username'];
+	$username = mysqli_real_escape_string($db, $username);
 
-if (signup($user, $pass, $fname, $lname, $college, $major)){
-	$_SESSION['user']   = $user;
-	$_SESSION['logged'] = true;
-	$_SESSION['fname'] = $fname;
-	$_SESSION['lname'] = $lname;
-	$_SESSION['college'] = $college;
-	$_SESSION['major'] = $major;
-	redirect ("Logged in! Redirecting to user profile.", "profile.php", 3);
-}
+	$password = $_REQUEST['password'];
+	$password = mysqli_real_escape_string($db, $password);
 
-else{
-	redirect("Please login!", "login.html", 3);
-}
+	$fname = $_REQUEST['fname'];
+	$fname = mysqli_real_escape_string($db, $fname);
 
-?>
+	$lname = $_REQUEST['lname'];
+	$lname = mysqli_real_escape_string($db, $lname);
+
+	$college = $_REQUEST['college'];
+	$college = mysqli_real_escape_string($db, $college);
+
+	$major = $_REQUEST['major'];
+	$major = mysqli_real_escape_string($db,$major);
+
+	$query = "INSERT into accounts000 (id, email, password, fname, lname, college, major) VALUES ('NULL', '$username', '$password', '$fname', '$lname', '$college', '$major')";
+	$result = mysqli_query($db,$query);
+
+	if($result){
+		echo "<div class='form'>
+                <h3>Signup successful.</h3>
+                <br/>Click here to <a href='login.php'>Login</a></div>";
+	}
+}else{
+	?>
+    <!-- SIGNUP FORM -->
+            <div class="form">
+                <h1>Signup</h1>
+                <form name="signup" action="" method="post">
+                    <input id="username" type="email" name="username" placeholder="Enter username" required />
+                    <input id="password" type="password" name="password" placeholder="Password" required />
+                    <input id="fname" name="fname" type="text" placeholder="Enter first name" required />
+                    <input id="lname" name="lname" type="text" placeholder="Enter last name" required />
+                    <input id="college" name="college" type="text" placeholder="Enter college" required />
+                    <input id="major" name="major" type="text" placeholder="Enter major" required />
+                    <input type="submit" name="submit" value="Signup" />
+                </form>
+                <p>Already have an account? <a href='login.php'>Login Here</a></p>
+            </div>
+<?php } ?>
+</body>
+</html>

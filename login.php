@@ -1,36 +1,47 @@
-<?php 
-	session_set_cookie_params(0, "/~sas238/", "web.njit.edu");
-	session_start(); 
-?>
-<?php 
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);  
-ini_set('display_errors' , 1);
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <?php
+        include('connect.php');
+        include('functions.php');
+        session_start();
+        //check if username & password is in database
+        if (isset($_POST['username'])){
+            $username = $_REQUEST['username'];
+            $username = mysqli_real_escape_string($db,$username);
 
-include ("functions.php");
-include("signup.php");
-include("account.php");
-$db = mysqli_connect($hostname,$username, $password ,$project);
-connect();
+            $password = $_REQUEST['password'];
+            $password = mysqli_real_escape_string($db,$password);
 
-$user = $_GET["username"]; echo "<br>User is $user<br>";
-$pass = $_GET["password"]; echo "<br>Password is $pass<br>";
-//$fname = $_GET["fname"]; echo "<br>First name is $fname<br>";
-//$lname = $_GET["lname"]; echo "<br>Last name is $lname<br>";
-//$college = $_GET["college"]; echo "<br>College is $college<br>";
-//$major = $_GET["major"]; echo "<br>Major is $major<br>";
+            $query = "SELECT * FROM accounts000 WHERE email='$username' and password='$password'";
+            $result = mysqli_query($db,$query) or die(mysqli_error());
+            $rows = mysqli_num_rows($result);
+            if($rows==1){
+                $_SESSION['username'] = $username;
 
-if (auth($user, $pass)){
-	$_SESSION['user']   = $user;
-	$_SESSION['logged'] = true;
-	$_SESSION['fname'] = $fname;
-	$_SESSION['lname'] = $lname;
-	$_SESSION['college'] = $college;
-	$_SESSION['major'] = $major;
-	redirect ("Logged in! Redirecting to user profile.", "profile.php", 3);
-}
-
-else{
-	gatekeeper();
-}
-
-?>
+                redirect('Loading user profile...', 'profile.php', 3);
+            }else{
+                echo "<div class='form'>
+        <h3>Please enter valid username and password.</h3>
+        <br/>Click here to <a href='login.php'>Login</a></div>";
+            }
+        }else{
+            ?>
+            <!-- LOGIN FORM -->
+            <div class="form">
+                <h1>Login</h1>
+                <form action="" method="post" name="login">
+                    <input id="username" type="email" name="username" placeholder="Enter username" required/>
+                    <input id="password" type="password" name="password" placeholder="Enter password" required/>
+                    <input name="submit" type="submit" value="Login" />
+                </form>
+                <p>Don't have an account? <a href='signup.php'>Signup Here</a></p>
+            </div>
+        <?php } ?>
+    </body>
+</html>
