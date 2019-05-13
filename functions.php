@@ -5,4 +5,12 @@ function redirect($message, $url, $delay){
 	header ("refresh:$delay url = $url");
 	exit();
 }
+
+//get task id
+function taskid($rows){
+    global $taskid;
+    $taskid = $rows["id"];
+    $_SESSION['taskid'] = $taskid;
+    return $taskid;
+}
 ?>

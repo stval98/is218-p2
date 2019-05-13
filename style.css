@@ -6,6 +6,9 @@ body {
     padding: 10px;
     text-align: center;
 }
+.list{
+    text-align: left;
+}
 .clearfix:before, .clearfix:after{
     content: "";
     display: table;
@@ -22,8 +25,9 @@ a:hover{
     color: #FF6347
 }
 .form{
-    width: 300px;
+    width: 500px;
     margin: 0 auto;
+    position: relative;
 }
 input[type='text'], input[type='email'],
 input[type='password'] {
@@ -48,4 +52,27 @@ input[type='submit']{
 }
 input[type='submit']:hover {
     background-color: #FF6347;
+}
+#markdone, #delete, #edit{
+    display: inline-block;
+    padding-right: 10px;
+    float: right;
+}
+#done, #deletetask, #edittask{
+    font-size: 12px;
+    padding: 2px 2px 2px;
+    color: #fff;
+    background-color: #FF7F50;
+    text-shadow: rgba(0,0,0,0.24) 0 1px 0;
+    font-size: 16px;
+    border: 1px solid #FF7F50;
+    border-radius: 2px;
+    margin-top: 10px;
+    display: inline-block;
+}
+#deletetask:hover, #edittask:hover {
+    background-color: #FF6347;
+}
+li{
+    padding: 15px;
 }

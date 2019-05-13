@@ -44,12 +44,12 @@ if (isset($_REQUEST['username'])){
             <div class="form">
                 <h1>Signup</h1>
                 <form name="signup" action="" method="post">
-                    <input id="username" type="email" name="username" placeholder="Enter username" required />
-                    <input id="password" type="password" name="password" placeholder="Password" required />
-                    <input id="fname" name="fname" type="text" placeholder="Enter first name" required />
-                    <input id="lname" name="lname" type="text" placeholder="Enter last name" required />
-                    <input id="college" name="college" type="text" placeholder="Enter college" required />
-                    <input id="major" name="major" type="text" placeholder="Enter major" required />
+                    <input id="username" type="email" name="username" placeholder="Enter username" required /><br>
+                    <input id="password" type="password" name="password" placeholder="Enter password" required /><br>
+                    <input id="fname" name="fname" type="text" placeholder="Enter first name" required /><br>
+                    <input id="lname" name="lname" type="text" placeholder="Enter last name" required /><br>
+                    <input id="college" name="college" type="text" placeholder="Enter college" required /><br>
+                    <input id="major" name="major" type="text" placeholder="Enter major" required /><br>
                     <input type="submit" name="submit" value="Signup" />
                 </form>
                 <p>Already have an account? <a href='login.php'>Login Here</a></p>
