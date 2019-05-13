@@ -1,5 +1,8 @@
 # IS 218 Project 2 - To-do List
 
+**Group:** Sophia Saint-Val
+**AFS Link:** https://web.njit.edu/~sas238/download/IS218/Projects/Project%202/login.php
+
 Requirements:
 --------------
 Please design an EASY to-do list web application. It must have a front-end and back-end (php)
